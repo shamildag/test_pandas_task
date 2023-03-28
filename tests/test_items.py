@@ -5,12 +5,12 @@ from main import join_DF_by_orderId
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        data = {"order_id": [3, 2, 10000]}
-        data2 = {"order_id": [3, 2, 10000]}
+    def test_joining(self):
+        data = {"order_id": [3, 2, 10000], "fruit": ["apple", "banana", "avocado"]}
+        data2 = {"order_id": [3, 2, 10000], "phones": ["Motorola", "LG", "Sagem"]}
         df_temp = pd.DataFrame.from_dict(data)
         df_temp2 = pd.DataFrame.from_dict(data2)
-        join_DF_by_orderId(df_temp, df_temp2)
+        print(join_DF_by_orderId(df_temp, df_temp2))
 
     def test_something2(self):
         # creating the first DataFrame
@@ -20,7 +20,7 @@ class MyTestCase(unittest.TestCase):
         print(df1)
 
         # creating the second DataFrame
-        df2 = pd.DataFrame({"fruit": ["banana", "apple", "avocado"],
+        df2 = pd.DataFrame({"fruit": ["apple", "banana", "avocado"],
                             "wholesaler_price": [65, 68, 75]})
         print("The second DataFrame")
         print(df2)
