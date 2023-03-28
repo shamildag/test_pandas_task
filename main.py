@@ -16,9 +16,10 @@ if __name__ == '__main__':
     result: DataFrame = join_DF_by_orderId(df_items, df_orders)
     selected_result = select_columns_required_for_items_price_prediction(result)
 
-    #add additional date column
+    #add additional date column to create more effective structure of catalog ( product -> day )
     # with_data_col = add_additional_date_column(selected_result)
     # print(with_data_col)
     # save as parquet indexed by product_id and timestamp
-    columns: list[str] = ["product_id", "order_purchase_timestamp"]
+    # columns: list[str] = ["product_id", "order_purchase_timestamp"]
+    columns: list[str] = ["product_id"]
     save_df_as_parquet_partitioned(result, storage_place, columns)
