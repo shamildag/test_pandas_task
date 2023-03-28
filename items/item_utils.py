@@ -18,6 +18,11 @@ def join_DF_by_orderId(df_items: DataFrame, df_orders: DataFrame) -> DataFrame:
 def select_columns_required_for_items_price_prediction(df: DataFrame) -> DataFrame:
     return df[["order_id", "order_item_id", "product_id", "order_purchase_timestamp"]]
 
+def add_additional_date_column(df: DataFrame) -> DataFrame:
+    index = pd.DatetimeIndex(df[["order_purchase_timestamp"]]).dayofweek
+    print("some:  " + index)
+    return df
+
 def receive_mean_of_items_for_specific_timestamp(df: DataFrame) -> DataFrame:
     return df.groupby("product_id", "order_purchase_timestamp").mean()
 
