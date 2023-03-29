@@ -10,7 +10,8 @@ class MyTestCase(unittest.TestCase):
         data2 = {"order_id": [3, 2, 10000], "phones": ["Motorola", "LG", "Sagem"]}
         df_temp = pd.DataFrame.from_dict(data)
         df_temp2 = pd.DataFrame.from_dict(data2)
-        print(join_DF_by_orderId(df_temp, df_temp2))
-
+        joined_df = join_DF_by_orderId(df_temp, df_temp2)
+        print(joined_df)
+        assert joined_df.values.size == 9
 if __name__ == '__main__':
     unittest.main()
